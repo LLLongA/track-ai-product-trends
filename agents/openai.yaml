@@ -1,0 +1,4 @@
+interface:
+  display_name: "Track AI Product Trends"
+  short_description: "Track daily AI product trend signals"
+  default_prompt: "Use $track-ai-product-trends to produce today's AI product trend radar."
