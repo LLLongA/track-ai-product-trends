@@ -27,6 +27,38 @@ Default deliverable: a Markdown deep-review article that can later be turned int
 
 If the user asks for cards/images, first create or confirm the Markdown artifact, then invoke `guizang-social-card-skill` for image generation.
 
+## Deep Review Visual Direction
+
+This skill must not reuse the same visual language as `track-ai-product-trends`.
+
+The distinction is intentional:
+
+- Trend radar cards are discovery-oriented: lighter, faster to scan, lower-to-medium density, and comfortable with more breathing room.
+- Deep-review cards are teardown-oriented: denser, colder, more severe, and more analytical. The reader should feel they are looking at an analyst workbench, not a discovery carousel.
+
+When this skill continues into `guizang-social-card-skill`, use these defaults unless the user explicitly asks for another direction:
+
+1. Visual stance
+- Prefer `Swiss International` over `Editorial Magazine` for most deep reviews.
+- Use a cold paper / dark ink / hard-accent palette. Think steel, slate, IKB-blue, or similarly restrained cold accents.
+- Avoid warm magazine palettes, soft lifestyle styling, and airy trend-radar composition.
+
+2. Information density
+- Most 3:4 pages should contain at least three layers: `judgment`, `evidence`, and `implication`.
+- Prefer structured modules: comparison tables, stacked ledgers, matrix fills, h-bar charts, KPI strips, system maps, and compact score rows.
+- Avoid pages that are only a slogan plus 3 bullets unless it is the single intentional rhythm-break page.
+- The cover may breathe slightly more, but it still needs a representative image plus multiple hard signals.
+
+3. Cover requirements
+- Include the product logo or representative product image.
+- Include at least three hard signals when available: stars, forks, score, collection date, launch date, pricing, deployment model, or adoption signal.
+- The conclusion sentence should be decisive and specific, not a vague compliment.
+
+4. Relationship to trend-radar output
+- `track-ai-product-trends` is for breadth and ranking.
+- `ai-product-deep-review` is for depth and mechanism.
+- If both outputs appear in the same broader workflow, the deep-review deck should feel more rigorous, colder, and more evidence-heavy than the trend deck.
+
 ## Evidence Collection
 
 Prefer official and primary sources:
@@ -181,6 +213,24 @@ Use this structure by default:
 
 14. Sources
 - Group sources by official product, GitHub, Product Hunt, competitors, and date-sensitive metrics.
+
+## Social Card Density Requirements
+
+When preparing page-by-page card copy, do not stop at title-plus-bullets. Each page should usually contain:
+
+1. a clear claim,
+2. one evidence block or structured breakdown,
+3. one implication, recommendation, or reverse-thinking line.
+
+Preferred page devices:
+
+- positioning page: category + ICP + why-now relationship,
+- mechanism page: objects + flow + loop,
+- value page: pain + value + organizational leverage,
+- differentiation page: common vs unique vs hard-to-copy,
+- adoption page: first use case + rollout path + friction,
+- risk page: failure trigger + trust break + must-be-true assumption,
+- judgment page: score + recommendation + what would change the view.
 
 ## Social Card Structure
 

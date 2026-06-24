@@ -14,6 +14,9 @@ Use this template when the user wants a complete Markdown artifact or a social-c
 - 产品设计分：{x.x}/5（置信度：{high/medium/low}）
 - 机会分：{x.x}/5（置信度：{high/medium/low}）
 
+> 社交卡片默认风格说明：
+> 深度评测卡片应采用高信息密度、冷峻配色、偏分析台账式的表达；不要沿用趋势雷达那种轻量、留白较多的视觉语气。
+
 ## Bottom Line
 
 - {judgment 1}
@@ -139,6 +142,9 @@ Use this template when the user wants a complete Markdown artifact or a social-c
 - {point 1}
 - {point 2}
 - {point 3}
+补充：
+- 类别判断：{category judgment}
+- 为什么是现在：{why-now link}
 
 ### xhs-03-mechanism
 
@@ -147,6 +153,9 @@ Use this template when the user wants a complete Markdown artifact or a social-c
 - {object/action/loop 1}
 - {object/action/loop 2}
 - {object/action/loop 3}
+补充：
+- 核心对象：{object cluster}
+- 关键闭环：{loop}
 
 ### xhs-04-value
 
@@ -155,6 +164,9 @@ Use this template when the user wants a complete Markdown artifact or a social-c
 - {value 1}
 - {value 2}
 - {value 3}
+补充：
+- 团队价值：{team/company value}
+- 价值兑现风险：{value risk}
 
 ### xhs-05-differentiation
 
@@ -163,6 +175,9 @@ Use this template when the user wants a complete Markdown artifact or a social-c
 - {differentiator 1}
 - {differentiator 2}
 - {differentiator 3}
+补充：
+- 常规能力：{table stakes}
+- 难复制部分：{moat}
 
 ### xhs-06-adoption
 
@@ -171,6 +186,9 @@ Use this template when the user wants a complete Markdown artifact or a social-c
 - {adoption point 1}
 - {adoption point 2}
 - {adoption point 3}
+补充：
+- 第一批用户：{early adopters}
+- 阻力：{friction}
 
 ### xhs-07-risks
 
@@ -179,6 +197,9 @@ Use this template when the user wants a complete Markdown artifact or a social-c
 - {risk 1}
 - {risk 2}
 - {risk 3}
+补充：
+- 用户信任风险：{trust risk}
+- 必须成立的假设：{must-be-true}
 
 ### xhs-08-judgment
 
@@ -187,6 +208,9 @@ Use this template when the user wants a complete Markdown artifact or a social-c
 - {recommendation}
 - {who should track/use}
 - {what to watch next}
+补充：
+- 产品设计分：{x.x}/5
+- 机会分：{x.x}/5
 
 ## Sources
 
