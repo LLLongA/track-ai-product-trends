@@ -5,8 +5,8 @@ Use this as a compact shape for daily reports.
 ## Bottom Line
 
 - AI coding and workflow automation are the strongest repeated launch clusters today.
-- Product Hunt adds non-open-source product packaging signals that GitHub misses.
-- GitHub Trending Daily shows short-term developer attention; GitHub new-hot shows recent breakout projects; Product Hunt shows packaged launch signals.
+- Skill 日榜 adds workflow packaging signals that GitHub misses.
+- GitHub Trending Daily shows short-term developer attention; GitHub new-hot shows recent breakout projects; skill 日榜 shows packaged capability signals.
 
 ## GitHub Trending Daily 榜
 
@@ -24,14 +24,14 @@ GitHub 新增热门口径：created:>近30天 + AI/LLM/agent/MCP/coding keywords
 | 1 | example/new-hot-agent | 面向 coding agent 的运行与评估工具 | 4.2/5 |
 | 2 | example/new-hot-context | 面向 AI 编程的代码上下文治理层 | 4.0/5 |
 
-## Product Hunt 产品榜
+## skill 日榜
 
-Product Hunt window: previous-day / last-24-hour leaderboard.
+skill 日榜 window: latest completed daily leaderboard.
 
-| 排名 | 产品 | 一句话定位 | 产品设计分 |
+| 排名 | 项目 | 一句话定位 | 产品设计分 |
 |---:|---|---|---:|
-| 1 | Example Agent Eval | 面向 AI agent 的评估、定位问题和修复工具 | 4.3/5 |
-| 2 | Example MCP App | 面向 MCP 应用的开发框架 | 4.0/5 |
+| 1 | Example Agent Skill | 面向 AI agent 的评估、排障和执行增强 skill | 4.3/5 |
+| 2 | Example Workflow Skill | 面向工作流自动化的可复用 skill 打包 | 4.0/5 |
 
 ## GitHub Trending Daily 分项目 quick-pm 分析
 
@@ -53,15 +53,15 @@ Product Hunt window: previous-day / last-24-hour leaderboard.
 反向思考：新项目 star 增长快不等于产品成熟，需要验证文档、集成、维护节奏和真实使用案例。
 建议：值得重点跟踪，适合进一步做 quick-pm 深挖。
 
-## Product Hunt 分产品 quick-pm 分析
+## skill 日榜分项目 quick-pm 分析
 
-### 1. Example Agent Eval：4.3/5
+### 1. Example Agent Skill：4.3/5
 
-定位：面向 AI agent 的评估、定位问题和修复工具。
-用户价值：解决 agent 从 demo 到生产过程中的可靠性、调试和信任问题。
-差异化：切入 agent evaluation，而不是再做一个通用 agent wrapper。
-反向思考：Product Hunt 热度只能说明 launch momentum，不能证明留存和生产可用性。
-建议：先观察官网、定价、集成和真实客户案例，再决定是否深挖。
+定位：面向 AI agent 的评估、定位问题和执行增强 skill。
+用户价值：把一段分散的 agent 经验沉淀成可复用工作流，缩短试错时间。
+差异化：切入 skill packaging，而不是只做一个仓库或一次性 prompt。
+反向思考：skill 日榜热度只能说明当日关注度，不能证明长期复用和团队采用。
+建议：先验证 linked repo、说明文档、输入输出边界和真实使用案例，再决定是否深挖。
 
 ## Social Card Order
 
@@ -74,6 +74,6 @@ When this report is turned into social cards, the file order should be:
 5. `xhs-05-github-new-hot.png`
 6. `xhs-06-github-new-hot-detail-1.png`
 7. `xhs-07-github-new-hot-detail-2.png`
-8. `xhs-08-product-hunt.png`
-9. `xhs-09-product-hunt-detail-1.png`
-10. `xhs-10-product-hunt-detail-2.png`
+8. `xhs-08-skill-daily.png`
+9. `xhs-09-skill-daily-detail-1.png`
+10. `xhs-10-skill-daily-detail-2.png`

@@ -1,6 +1,5 @@
----
 name: track-ai-product-trends
-description: Track the latest AI product trends from GitHub Trending Daily, GitHub new-hot repositories, and Product Hunt previous-day launches. Use this skill when the user asks for AI product trend tracking, daily AI product radar, new AI project recommendations, Product Hunt/GitHub AI analysis, or product/opportunity scoring for emerging AI tools.
+description: Track the latest AI product trends from GitHub Trending Daily, GitHub new-hot repositories, and the skill daily leaderboard. Use this skill when the user asks for AI product trend tracking, daily AI product radar, new AI project recommendations, GitHub/skill AI analysis, or product/opportunity scoring for emerging AI tools.
 ---
 
 # Track AI Product Trends
@@ -15,30 +14,30 @@ Use these sources by default unless the user narrows the request:
 
 1. GitHub Trending: daily developer attention.
 2. GitHub new-hot repo榜: recently created repositories with unusually high traction.
-3. Product Hunt: previous-day / last-24-hour AI product launches and productized packaging signals.
+3. Skill 日榜: recent skill launches and packaging signals inside the skill ecosystem.
 
 Optional later sources: Hacker News Show HN, Hugging Face Trending, Reddit/HN comments, Chrome Web Store/App Store reviews, YC launches, funding/news, and Chinese communities.
 
-## When To Use Product Hunt
+## When To Use Skill 日榜
 
-Use Product Hunt as a productization signal, not as final proof of product quality.
+Use skill 日榜 as a productization and workflow-packaging signal, not as final proof of product quality.
 
-Default Product Hunt window:
-- Use the near-24-hour window, normally **yesterday's Product Hunt daily leaderboard** relative to the report date.
-- If the user asks for "today's report", do not rely on the still-forming same-day leaderboard unless explicitly requested. Prefer yesterday's completed leaderboard plus indexed Product Hunt product pages.
-- State the exact Product Hunt date used, e.g. "Product Hunt window: 2026-06-22 daily leaderboard for the 2026-06-23 report."
+Default skill 日榜 window:
+- Use the near-24-hour window, normally the most recent completed `skill 日榜` relative to the report date.
+- If the skill platform's same-day ranking is still moving, prefer the latest completed daily snapshot unless the user explicitly asks for an intraday view.
+- State the exact date used, e.g. `skill 日榜 window: 2026-06-25 daily leaderboard.`
 
-Product Hunt is useful for:
-- launch positioning, screenshots, taglines, maker narrative, and comments,
-- detecting product categories that are getting repeated launches,
-- finding non-open-source AI tools missed by GitHub.
+Skill 日榜 is useful for:
+- launch positioning, screenshots, concise capability packaging, and maker narrative,
+- detecting which AI capabilities are being productized into reusable skills,
+- finding workflow-layer innovation missed by GitHub repositories alone.
 
-Treat Product Hunt with caution when:
-- the daily list is still young and vote/comment counts are low,
-- the page is blocked by Cloudflare or only search snippets are available,
-- the product has launch polish but weak evidence of durable usage.
+Treat skill 日榜 with caution when:
+- the daily list is still young and the ranking is volatile,
+- the listing page is sparse and only gives short descriptions without real usage evidence,
+- the skill has launch polish but weak proof of repeat use or durable workflow value.
 
-Best practice: use yesterday's Product Hunt leaderboard as the main source, then use search-index evidence, official product sites, and 7/30-day Product Hunt context only for validation.
+Best practice: use the latest completed skill 日榜 as the main source, then use the skill page itself, linked repo/site/docs, and adjacent launch context only for validation.
 
 ## Workflow
 
@@ -49,7 +48,7 @@ Best practice: use yesterday's Product Hunt leaderboard as the main source, then
 2. Build candidate pool.
 - Collect GitHub Trending AI-related repos.
 - Collect GitHub new-hot repos using GitHub Search API or search queries, normally `created:>recent_date` + AI/LLM/agent/MCP/coding keywords + `sort=stars`.
-- Collect Product Hunt AI launches from the previous-day / last-24-hour leaderboard and adjacent categories: AI Agents, LLMs, AI Coding Agents, Vibe Coding Tools, AI Notetakers, AI Workflow Automation, AI Generative Media.
+- Collect skill 日榜 candidates from the latest completed daily leaderboard, prioritizing AI-related skills, agent workflows, productivity automations, creator tools, and developer tooling.
 - Deduplicate by product/repo/domain.
 
 3. Classify each candidate.
@@ -59,7 +58,7 @@ Best practice: use yesterday's Product Hunt leaderboard as the main source, then
 
 4. Analyze evidence.
 - For GitHub repos, use `analyze-open-source-repo` quick-pm when the user asks for repo-level analysis or when a repo enters the top shortlist.
-- For Product Hunt products, read Product Hunt page/search snippet plus official website/docs/pricing if available.
+- For skill 日榜 candidates, read the skill page plus linked repo/site/docs/examples if available.
 - Separate facts from inference. Include confidence: high, medium, or low.
 
 5. Score and rank.
@@ -115,7 +114,7 @@ For daily reports, use this structure:
 - 3-5 bullets on today's AI product trend pattern.
 
 2. GitHub Trending Daily 榜
-- Keep GitHub and Product Hunt in separate tables.
+- Keep GitHub and skill 日榜 in separate tables.
 - Keep GitHub Trending Daily and GitHub new-hot in separate tables.
 - Use `github.com/trending?since=daily` or another explicit GitHub Trending daily source.
 - If GitHub Trending cannot be parsed or accessed, still include the section and state: `GitHub Trending Daily 数据获取失败，本次不混用新增热门项目替代。`
@@ -126,10 +125,13 @@ For daily reports, use this structure:
 - Add a one-line note before the table with the exact data口径, e.g. `GitHub 新增热门口径：created:>2026-06-01 + AI/LLM/agent/MCP/coding keywords + sort=stars，并按产品相关性筛选重排。`
 - Table columns: 排名, 项目, 一句话定位, 产品设计分.
 
-4. Product Hunt ranking table
-- Use previous-day / last-24-hour Product Hunt candidates by default.
-- Table columns: 排名, 产品, 一句话定位, 产品设计分.
-- Add a one-line note before the table with the exact Product Hunt date/window used.
+4. Skill 日榜
+- Use the latest completed skill 日榜 by default.
+- When the user explicitly wants `skills.sh`, treat `https://www.skills.sh/trending` as the primary source and `https://www.skills.sh/hot` as a secondary recency signal.
+- For `skills.sh` mode, do not mechanically copy the raw Hot ranking into the final table. Use `Trending` as the main ranking base and use `Hot` only to promote still-active candidates or positive-change newcomers.
+- If the top of `Trending` or `Hot` is dominated by the same publisher or near-identical media skills, deduplicate aggressively and keep only the most representative 1-2 entries from that cluster.
+- Table columns: 排名, 项目, 一句话定位, 产品设计分.
+- Add a one-line note before the table with the exact skill 日榜 date/window used.
 
 5. GitHub Trending Daily 分项目 quick-pm 分析
 For each GitHub Trending Daily shortlisted candidate, use this compact Chinese structure:
@@ -139,6 +141,7 @@ For each GitHub Trending Daily shortlisted candidate, use this compact Chinese s
 - `差异化：...`
 - `反向思考：...`
 - `建议：...`
+- If the ranking table lists 10 items, this analysis section should also cover all 10 items unless the user explicitly asks for a shorter shortlist.
 
 6. GitHub 新增热门分项目 quick-pm 分析
 For each GitHub shortlisted candidate, use this compact Chinese structure:
@@ -148,27 +151,29 @@ For each GitHub shortlisted candidate, use this compact Chinese structure:
 - `差异化：...`
 - `反向思考：...`
 - `建议：...`
+- If the ranking table lists 10 items, this analysis section should also cover all 10 items unless the user explicitly asks for a shorter shortlist.
 
-7. Product Hunt 分产品 quick-pm 分析
-For each Product Hunt shortlisted candidate, use the same compact Chinese structure:
-- `N. Product Name：X.X/5`
+7. Skill 日榜分项目 quick-pm 分析
+For each skill 日榜 shortlisted candidate, use the same compact Chinese structure:
+- `N. Skill Name：X.X/5`
 - `定位：...`
 - `用户价值：...`
 - `差异化：...`
 - `反向思考：...`
 - `建议：...`
+- If the ranking table lists 10 items, this analysis section should also cover all 10 items unless the user explicitly asks for a shorter shortlist.
 
 8. Trend clusters
 - Group candidates into themes such as coding agents, AI voice, workflow automation, agent infra, AI content production, AI search, vertical AI SaaS.
 
 9. Follow-up queue
 - Which repos should be analyzed with `analyze-open-source-repo` quick-pm.
-- Which Product Hunt products need official-site/pricing validation.
+- Which skill 日榜项目 need linked repo/site/docs validation.
 - Which themes are suitable for content output.
 
 10. Sources
-- Keep sources grouped by GitHub and Product Hunt.
-- Include exact dates for GitHub/API/Product Hunt data when available.
+- Keep sources grouped by GitHub and skill 日榜.
+- Include exact dates for GitHub/API/skill 日榜 data when available.
 
 ## Default Deliverable Scope
 
@@ -176,7 +181,7 @@ Unless the user explicitly asks for more, the daily radar should contain exactly
 
 1. `GitHub Trending Daily 榜`
 2. `GitHub 新增热门项目榜`
-3. `Product Hunt 产品榜`
+3. `skill 日榜`
 
 Do not add a fourth default ranking table such as `GitHub star-growth榜`.
 If star-growth data becomes available later, include it only when the user explicitly asks for it or when the report is clearly framed as an extended edition.
@@ -192,8 +197,8 @@ Required order:
 3. `GitHub Trending Daily` detail cards
 4. `GitHub 新增热门项目榜` card
 5. `GitHub 新增热门项目` detail cards
-6. `Product Hunt 产品榜` card
-7. `Product Hunt` detail cards
+6. `skill 日榜` card
+7. `skill 日榜` detail cards
 
 Do not output all榜单 cards first and all detail cards later.
 The intended reading flow is:
@@ -210,26 +215,26 @@ Recommended filename pattern:
 - `xhs-05-github-new-hot.png`
 - `xhs-06-github-new-hot-detail-1.png`
 - `xhs-07-github-new-hot-detail-2.png`
-- `xhs-08-product-hunt.png`
-- `xhs-09-product-hunt-detail-1.png`
-- `xhs-10-product-hunt-detail-2.png`
+- `xhs-08-skill-daily.png`
+- `xhs-09-skill-daily-detail-1.png`
+- `xhs-10-skill-daily-detail-2.png`
 
 If one榜单 has fewer detail pages, keep the same grouped ordering and simply skip the missing suffixes.
 
-## Product Hunt Trial Format
+## Skill 日榜 Trial Format
 
-When the user asks to test Product Hunt's usefulness, run a small sample:
+When the user asks to test skill 日榜's usefulness, run a small sample:
 
-- Collect 5-10 AI-related Product Hunt candidates from the previous-day / last-24-hour leaderboard, topic pages, search results, or official Product Hunt snippets.
-- If direct page access is blocked, say so and mark confidence low/medium.
+- Collect 5-10 AI-related skill candidates from the latest completed daily leaderboard, skill pages, search results, or official snippets.
+- If direct page access is blocked or the listing is too thin, say so and mark confidence low/medium.
 - Score each candidate with the five-dimension model.
-- Conclude whether Product Hunt adds signal beyond GitHub, and where it is noisy.
+- Conclude whether skill 日榜 adds signal beyond GitHub, and where it is noisy.
 
 ## Guardrails
 
 - Do not equate upvotes/stars with product quality.
 - Do not claim "latest" without live verification.
-- Prefer official sources: GitHub repo, Product Hunt page, product website, docs, changelog, pricing.
+- Prefer official sources: GitHub repo, skill page, linked website/docs, changelog, pricing.
 - Include exact dates for launches and volatile signals when available.
 - For GitHub repos, avoid deep code claims unless README/docs/code files were read.
-- For Product Hunt, treat comments and votes as launch momentum, not durable retention.
+- For skill 日榜, treat ranking position as launch momentum, not durable retention.
