@@ -190,6 +190,8 @@ If star-growth data becomes available later, include it only when the user expli
 
 When the Markdown report is confirmed and the workflow continues into social-card generation, keep the output sequence grouped by榜单, and default to the denser merged-card layout instead of separating ranking and detail pages.
 
+When producing a rendered card package, also copy or write the exact Markdown report used for that card set into the same `output/` directory as the images. The Markdown must match the final card data, not an earlier draft. Use a dated/versioned filename such as `ai-product-trends-YYYYMMDD-vN.md` when the card folder is versioned.
+
 Required order:
 
 1. Summary / cover card
