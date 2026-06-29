@@ -188,38 +188,36 @@ If star-growth data becomes available later, include it only when the user expli
 
 ## Social Card Output Order
 
-When the Markdown report is confirmed and the workflow continues into social-card generation, keep the output sequence grouped by榜单 rather than by content type.
+When the Markdown report is confirmed and the workflow continues into social-card generation, keep the output sequence grouped by榜单, and default to the denser merged-card layout instead of separating ranking and detail pages.
 
 Required order:
 
 1. Summary / cover card
-2. `GitHub Trending Daily 榜` card
-3. `GitHub Trending Daily` detail cards
-4. `GitHub 新增热门项目榜` card
-5. `GitHub 新增热门项目` detail cards
-6. `skill 日榜` card
-7. `skill 日榜` detail cards
+2. `GitHub Trending Daily 榜` merged card `01-05`
+3. `GitHub Trending Daily 榜` merged card `06-10`
+4. `GitHub 新增热门项目榜` merged card `01-05`
+5. `GitHub 新增热门项目榜` merged card `06-10`
+6. `skill 日榜` merged card `01-05`
+7. `skill 日榜` merged card `06-10`
 
-Do not output all榜单 cards first and all detail cards later.
+Do not output all榜单 overview pages first and then push all点评页 to the back.
 The intended reading flow is:
-- first see one ranking card,
-- then immediately see the detailed evaluations for that ranking set,
+- first see one ranking set,
+- that same page should already carry concise project-level evaluation,
+- then continue to the second half of the same ranking set,
 - then move to the next ranking set.
 
 Recommended filename pattern:
 
 - `xhs-01-summary.png`
-- `xhs-02-github-trending-daily.png`
-- `xhs-03-github-trending-detail-1.png`
-- `xhs-04-github-trending-detail-2.png`
-- `xhs-05-github-new-hot.png`
-- `xhs-06-github-new-hot-detail-1.png`
-- `xhs-07-github-new-hot-detail-2.png`
-- `xhs-08-skill-daily.png`
-- `xhs-09-skill-daily-detail-1.png`
-- `xhs-10-skill-daily-detail-2.png`
+- `xhs-02-github-trending-1.png`
+- `xhs-03-github-trending-2.png`
+- `xhs-04-github-new-hot-1.png`
+- `xhs-05-github-new-hot-2.png`
+- `xhs-06-skill-daily-1.png`
+- `xhs-07-skill-daily-2.png`
 
-If one榜单 has fewer detail pages, keep the same grouped ordering and simply skip the missing suffixes.
+If one榜单 has fewer than 10 entries, keep the same grouped ordering and simply reduce the second page to the remaining items.
 
 ## Social Card Content Contract
 
@@ -228,7 +226,12 @@ When this skill continues into `guizang-social-card-skill`, do not leave the ima
 1. ranking overview information, and
 2. further per-project evaluation information.
 
-Use the older `2026-06-23` trend deck shape as the content contract reference: ranking card first, then two detail cards that continue the analysis for that ranking set.
+Default card shape:
+- summary cover first,
+- then each ranking set split into two dense Top 10 pages (`01-05`, `06-10`),
+- and each project row already includes its short evaluation.
+
+Do not default back to the old "one ranking table page + two separate detail pages" structure unless the user explicitly asks for a lighter, lower-density version.
 
 ### Required per-card payload
 
@@ -247,16 +250,54 @@ Must include:
 
 Do not let the summary cover become only an abstract slogan with no clue that the report contains GitHub projects and skill recommendations.
 
-#### Ranking cards: `xhs-02`, `xhs-05`, `xhs-08`
+#### Ranking cards: merged dense cards
 
 Purpose:
-- Present the full Top 10 ranking table for that ranking set.
+- Present one ranking set in a denser, more readable form.
+- Split Top 10 into two pages: `01-05` and `06-10`.
+- Let the reader finish both ranking and basic judgment on the same page.
 
-Must include:
+Must include on each project row:
+- `排名`
+- `项目名`
+- `产品设计分`
+- `定位`
+- `价值`
+- `差异化`
+- `建议`
+
+Must include on each page:
 - ranking-set label,
 - exact date or query window,
-- all 10 entries,
-- for each entry: `name + 一句话定位 + 产品设计分`.
+- half-range label such as `Top 10 · 01-05`,
+- a short reader-facing line such as `今天最值得点开的 5 个项目` or `继续看后 5 个 skill`.
+
+Do not use generic field-summary hints like:
+- `一句话定位 + 价值 + 建议`
+
+Prefer short reader-facing lines that explain why this half-page matters.
+
+### Dense card UI contract
+
+Use the current dense Swiss-style information card pattern as the default:
+
+1. Each ranking set is two portrait pages, not one table page plus detached detail pages.
+2. Each row is a compact evaluation block:
+   - large red ranking number,
+   - bold project name as the scan entry,
+   - score right-aligned,
+   - four short lines in this order: `定位 / 价值 / 差异化 / 建议`.
+3. Visual hierarchy:
+   - `项目名` should be the strongest row-level entry point.
+   - `定位` should be slightly lighter and separated a little from the next three lines.
+   - `价值` is the main body line.
+   - `差异化` is a secondary analytic line.
+   - `建议` should stand out more clearly than the middle two lines, typically with a small top gap and accent-colored label.
+4. Information density:
+   - keep rows tighter between projects than the older detail-card layout,
+   - but increase row-internal clarity through type hierarchy and micro-spacing instead of reducing content.
+5. Avoid large unused blank space at the bottom of dense ranking pages. The 5 project rows should visually carry the page height more evenly.
+6. Keep wording objective and restrained. Avoid dramatic section labels or slogan-like page subtitles.
 
 The ranking card is not the place for long prose. It should behave like a compact leaderboard.
 

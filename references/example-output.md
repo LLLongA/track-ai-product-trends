@@ -65,18 +65,15 @@ skill 日榜 window: latest completed daily leaderboard.
 
 ## Social Card Order
 
-When this report is turned into social cards, the file order should be:
+When this report is turned into social cards, the default file order should be:
 
 1. `xhs-01-summary.png`
-2. `xhs-02-github-trending-daily.png`
-3. `xhs-03-github-trending-detail-1.png`
-4. `xhs-04-github-trending-detail-2.png`
-5. `xhs-05-github-new-hot.png`
-6. `xhs-06-github-new-hot-detail-1.png`
-7. `xhs-07-github-new-hot-detail-2.png`
-8. `xhs-08-skill-daily.png`
-9. `xhs-09-skill-daily-detail-1.png`
-10. `xhs-10-skill-daily-detail-2.png`
+2. `xhs-02-github-trending-1.png`
+3. `xhs-03-github-trending-2.png`
+4. `xhs-04-github-new-hot-1.png`
+5. `xhs-05-github-new-hot-2.png`
+6. `xhs-06-skill-daily-1.png`
+7. `xhs-07-skill-daily-2.png`
 
 ## Social Card Content Mapping
 
@@ -88,60 +85,57 @@ Use this fixed mapping when turning the Markdown report into social cards:
 - 今日 2-3 条趋势判断
 - 今天最值得跟踪的 3-5 个项目 / skills
 
-### `xhs-02-github-trending-daily.png`
-
-- GitHub Trending Daily Top 10
-- 每一行都要有：`项目名 + 一句话定位 + 产品设计分`
-
-### `xhs-03-github-trending-detail-1.png`
+### `xhs-02-github-trending-1.png`
 
 - 覆盖 GitHub Trending 的 `01-05`
-- 每个项目都要有两行进一步点评：
-  - `价值：...`
-  - `建议：...`
+- 每个项目都要直接带：
+  - `项目名`
+  - `产品设计分`
+  - `定位`
+  - `价值`
+  - `差异化`
+  - `建议`
 
-### `xhs-04-github-trending-detail-2.png`
+### `xhs-03-github-trending-2.png`
 
 - 覆盖 GitHub Trending 的 `06-10`
-- 每个项目同样要有三行进一步点评
+- 延续同样的高密度合并结构
 
-### `xhs-05-github-new-hot.png`
-
-- GitHub 新增热门 Top 10
-- 每一行都要有：`项目名 + 一句话定位 + 产品设计分`
-
-### `xhs-06-github-new-hot-detail-1.png`
+### `xhs-04-github-new-hot-1.png`
 
 - 覆盖 GitHub 新增热门的 `01-05`
-- 每个项目两行进一步点评：`价值 / 建议`
+- 每个项目都要直接带：`项目名 / 产品设计分 / 定位 / 价值 / 差异化 / 建议`
 
-### `xhs-07-github-new-hot-detail-2.png`
+### `xhs-05-github-new-hot-2.png`
 
 - 覆盖 GitHub 新增热门的 `06-10`
-- 每个项目两行进一步点评：`价值 / 建议`
+- 延续同样的高密度合并结构
 
-### `xhs-08-skill-daily.png`
-
-- skill 日榜 Top 10
-- 每一行都要有：`项目名 + 一句话定位 + 产品设计分`
-
-### `xhs-09-skill-daily-detail-1.png`
+### `xhs-06-skill-daily-1.png`
 
 - 覆盖 skill 日榜的 `01-05`
-- 每个项目两行进一步点评：`价值 / 建议`
+- 每个项目都要直接带：`项目名 / 产品设计分 / 定位 / 价值 / 差异化 / 建议`
 
-### `xhs-10-skill-daily-detail-2.png`
+### `xhs-07-skill-daily-2.png`
 
 - 覆盖 skill 日榜的 `06-10`
-- 每个项目两行进一步点评：`价值 / 建议`
+- 延续同样的高密度合并结构
 
 Hard rule:
 
-- 只要榜单列了 10 个项目，对应两张 detail 卡就必须把 `01-10` 全部覆盖。
+- 只要榜单列了 10 个项目，对应两张 merged cards 就必须把 `01-10` 全部覆盖。
 - 不允许只做前 5 个项目的进一步点评。
+- 不要退回成“单独榜单页 + 单独 detail 页”的默认结构。
 
 Card label tone:
 
 - 页面上的几个字尽量客观、克制。
 - 可以直接跟内容走，比如：`GitHub Trending Daily`、`GitHub 新增热门`、`skills.sh`、`Top 10`、`01-05`、`06-10`
 - 避免：`最强信号`、`下半场信号`、`边缘但重要` 这类太“起标题感”的说法
+
+Dense layout cues:
+
+- `项目名` 要明显大于四行说明，承担扫描入口。
+- `定位` 略轻，和 `价值 / 差异化 / 建议` 间隔开一点。
+- `建议` 需要更像结论，通常给一点额外上间距，并让标签更醒目。
+- 项目之间不要松散，但页面底部也不要出现大块无意义留白。
