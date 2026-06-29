@@ -267,11 +267,10 @@ Purpose:
 
 Must include:
 - items `01-05` only,
-- for each item: `项目名` plus **three compact点评 lines**.
+- for each item: `项目名` plus **two compact点评 lines**.
 
-Preferred three-line structure:
+Preferred two-line structure:
 - `价值：...`
-- `判断：...`
 - `建议：...`
 
 #### Detail cards page 2: `xhs-04`, `xhs-07`, `xhs-10`
@@ -281,7 +280,7 @@ Purpose:
 
 Must include:
 - items `06-10` only,
-- for each item: `项目名` plus the same three compact点评 lines.
+- for each item: `项目名` plus the same two compact点评 lines.
 
 ### Hard rules for detail-card coverage
 
@@ -301,7 +300,6 @@ Keep the style close to the proven `2026-06-23` deck:
 
 For image readability, prefer:
 - `价值`
-- `判断`
 - `建议`
 
 over the full longer Markdown structure:
@@ -313,7 +311,7 @@ over the full longer Markdown structure:
 
 In other words:
 - the Markdown article can stay fuller,
-- but the image deck must compress each project into a compact three-line点评 block.
+- but the image deck must compress each project into a compact two-line点评 block.
 
 ### Mapping from Markdown to cards
 
@@ -323,7 +321,6 @@ When converting the report into cards:
 2. Quick-pm analysis section -> two detail cards for that ranking set.
 3. Compress each candidate's analysis into:
    - one short value line,
-   - one short judgment line,
    - one short recommendation line.
 
 Do not invent a new card-level structure each day. Reuse this mapping so the deck remains stable and comparable over time.
@@ -332,12 +329,16 @@ Do not invent a new card-level structure each day. Reuse this mapping so the dec
 
 For the short Chinese labels that appear on card pages, keep them objective and low-drama.
 
-Preferred examples:
+Use simple labels that match the actual content of the page.
+
+Examples of acceptable tone:
+- `GitHub Trending Daily`
+- `GitHub 新增热门`
+- `skills.sh`
 - `具体评价`
-- `项目点评`
-- `继续点评`
-- `榜单说明`
-- `今日判断`
+- `Top 10`
+- `01-05`
+- `06-10`
 
 Avoid overly dramatic or self-conscious labels such as:
 - `最强信号`
