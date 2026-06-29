@@ -98,7 +98,7 @@ Use this fixed mapping when turning the Markdown report into social cards:
 - 覆盖 GitHub Trending 的 `01-05`
 - 每个项目都要有三行进一步点评：
   - `价值：...`
-  - `风险：...` 或 `反向思考：...`
+  - `判断：...`
   - `建议：...`
 
 ### `xhs-04-github-trending-detail-2.png`
@@ -114,12 +114,12 @@ Use this fixed mapping when turning the Markdown report into social cards:
 ### `xhs-06-github-new-hot-detail-1.png`
 
 - 覆盖 GitHub 新增热门的 `01-05`
-- 每个项目三行进一步点评：`价值 / 风险 / 建议`
+- 每个项目三行进一步点评：`价值 / 判断 / 建议`
 
 ### `xhs-07-github-new-hot-detail-2.png`
 
 - 覆盖 GitHub 新增热门的 `06-10`
-- 每个项目三行进一步点评：`价值 / 风险 / 建议`
+- 每个项目三行进一步点评：`价值 / 判断 / 建议`
 
 ### `xhs-08-skill-daily.png`
 
@@ -129,14 +129,20 @@ Use this fixed mapping when turning the Markdown report into social cards:
 ### `xhs-09-skill-daily-detail-1.png`
 
 - 覆盖 skill 日榜的 `01-05`
-- 每个项目三行进一步点评：`价值 / 风险 / 建议`
+- 每个项目三行进一步点评：`价值 / 判断 / 建议`
 
 ### `xhs-10-skill-daily-detail-2.png`
 
 - 覆盖 skill 日榜的 `06-10`
-- 每个项目三行进一步点评：`价值 / 风险 / 建议`
+- 每个项目三行进一步点评：`价值 / 判断 / 建议`
 
 Hard rule:
 
 - 只要榜单列了 10 个项目，对应两张 detail 卡就必须把 `01-10` 全部覆盖。
 - 不允许只做前 5 个项目的进一步点评。
+
+Card label tone:
+
+- 页面上的几个字尽量客观、克制。
+- 推荐：`具体评价`、`项目点评`、`继续点评`、`今日判断`
+- 避免：`最强信号`、`下半场信号`、`边缘但重要` 这类太“起标题感”的说法

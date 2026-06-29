@@ -271,7 +271,7 @@ Must include:
 
 Preferred three-line structure:
 - `价值：...`
-- `风险：...` or `反向思考：...`
+- `判断：...`
 - `建议：...`
 
 #### Detail cards page 2: `xhs-04`, `xhs-07`, `xhs-10`
@@ -301,7 +301,7 @@ Keep the style close to the proven `2026-06-23` deck:
 
 For image readability, prefer:
 - `价值`
-- `风险` or `反向思考`
+- `判断`
 - `建议`
 
 over the full longer Markdown structure:
@@ -323,10 +323,30 @@ When converting the report into cards:
 2. Quick-pm analysis section -> two detail cards for that ranking set.
 3. Compress each candidate's analysis into:
    - one short value line,
-   - one short risk / reverse-thinking line,
+   - one short judgment line,
    - one short recommendation line.
 
 Do not invent a new card-level structure each day. Reuse this mapping so the deck remains stable and comparable over time.
+
+### Tone of section labels
+
+For the short Chinese labels that appear on card pages, keep them objective and low-drama.
+
+Preferred examples:
+- `具体评价`
+- `项目点评`
+- `继续点评`
+- `榜单说明`
+- `今日判断`
+
+Avoid overly dramatic or self-conscious labels such as:
+- `最强信号`
+- `延伸方向`
+- `为什么上榜`
+- `下半场信号`
+- `产品化强信号`
+- `边缘但重要`
+- other headline-like phrasing that sounds too performative.
 
 ## Skill 日榜 Trial Format
 
