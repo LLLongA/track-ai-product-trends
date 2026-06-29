@@ -77,3 +77,66 @@ When this report is turned into social cards, the file order should be:
 8. `xhs-08-skill-daily.png`
 9. `xhs-09-skill-daily-detail-1.png`
 10. `xhs-10-skill-daily-detail-2.png`
+
+## Social Card Content Mapping
+
+Use this fixed mapping when turning the Markdown report into social cards:
+
+### `xhs-01-summary.png`
+
+- 这是什么报告
+- 今日 2-3 条趋势判断
+- 今天最值得跟踪的 3-5 个项目 / skills
+
+### `xhs-02-github-trending-daily.png`
+
+- GitHub Trending Daily Top 10
+- 每一行都要有：`项目名 + 一句话定位 + 产品设计分`
+
+### `xhs-03-github-trending-detail-1.png`
+
+- 覆盖 GitHub Trending 的 `01-05`
+- 每个项目都要有三行进一步点评：
+  - `价值：...`
+  - `风险：...` 或 `反向思考：...`
+  - `建议：...`
+
+### `xhs-04-github-trending-detail-2.png`
+
+- 覆盖 GitHub Trending 的 `06-10`
+- 每个项目同样要有三行进一步点评
+
+### `xhs-05-github-new-hot.png`
+
+- GitHub 新增热门 Top 10
+- 每一行都要有：`项目名 + 一句话定位 + 产品设计分`
+
+### `xhs-06-github-new-hot-detail-1.png`
+
+- 覆盖 GitHub 新增热门的 `01-05`
+- 每个项目三行进一步点评：`价值 / 风险 / 建议`
+
+### `xhs-07-github-new-hot-detail-2.png`
+
+- 覆盖 GitHub 新增热门的 `06-10`
+- 每个项目三行进一步点评：`价值 / 风险 / 建议`
+
+### `xhs-08-skill-daily.png`
+
+- skill 日榜 Top 10
+- 每一行都要有：`项目名 + 一句话定位 + 产品设计分`
+
+### `xhs-09-skill-daily-detail-1.png`
+
+- 覆盖 skill 日榜的 `01-05`
+- 每个项目三行进一步点评：`价值 / 风险 / 建议`
+
+### `xhs-10-skill-daily-detail-2.png`
+
+- 覆盖 skill 日榜的 `06-10`
+- 每个项目三行进一步点评：`价值 / 风险 / 建议`
+
+Hard rule:
+
+- 只要榜单列了 10 个项目，对应两张 detail 卡就必须把 `01-10` 全部覆盖。
+- 不允许只做前 5 个项目的进一步点评。

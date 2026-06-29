@@ -221,6 +221,113 @@ Recommended filename pattern:
 
 If one榜单 has fewer detail pages, keep the same grouped ordering and simply skip the missing suffixes.
 
+## Social Card Content Contract
+
+When this skill continues into `guizang-social-card-skill`, do not leave the image set at the level of ranking tables only. The card deck must carry both:
+
+1. ranking overview information, and
+2. further per-project evaluation information.
+
+Use the older `2026-06-23` trend deck shape as the content contract reference: ranking card first, then two detail cards that continue the analysis for that ranking set.
+
+### Required per-card payload
+
+#### `xhs-01-summary.png`
+
+Purpose:
+- Tell the reader what this report is.
+- Give 2-3 clear trend judgments.
+- Surface the 3-5 most值得跟踪 items across all sources.
+
+Must include:
+- report date,
+- source scope,
+- 2-3 short trend bullets,
+- a short "today's most值得跟踪" list.
+
+Do not let the summary cover become only an abstract slogan with no clue that the report contains GitHub projects and skill recommendations.
+
+#### Ranking cards: `xhs-02`, `xhs-05`, `xhs-08`
+
+Purpose:
+- Present the full Top 10 ranking table for that ranking set.
+
+Must include:
+- ranking-set label,
+- exact date or query window,
+- all 10 entries,
+- for each entry: `name + 一句话定位 + 产品设计分`.
+
+The ranking card is not the place for long prose. It should behave like a compact leaderboard.
+
+#### Detail cards page 1: `xhs-03`, `xhs-06`, `xhs-09`
+
+Purpose:
+- Continue the ranking card with deeper点评 for items `01-05`.
+
+Must include:
+- items `01-05` only,
+- for each item: `项目名` plus **three compact点评 lines**.
+
+Preferred three-line structure:
+- `价值：...`
+- `风险：...` or `反向思考：...`
+- `建议：...`
+
+#### Detail cards page 2: `xhs-04`, `xhs-07`, `xhs-10`
+
+Purpose:
+- Continue the ranking card with deeper点评 for items `06-10`.
+
+Must include:
+- items `06-10` only,
+- for each item: `项目名` plus the same three compact点评 lines.
+
+### Hard rules for detail-card coverage
+
+- If a ranking card lists 10 items, the paired detail cards must also cover all 10 items.
+- Do not stop after the first 5 items.
+- Do not replace the second detail page with summary filler while leaving items `06-10` uncovered.
+- Each listed item needs at least one "further evaluation" block in the card sequence, not just in the Markdown article.
+
+### Detail-card copy style
+
+Keep the style close to the proven `2026-06-23` deck:
+
+- concise,
+- product-oriented,
+- slightly judgmental,
+- easy to scan in image form.
+
+For image readability, prefer:
+- `价值`
+- `风险` or `反向思考`
+- `建议`
+
+over the full longer Markdown structure:
+- `定位`
+- `用户价值`
+- `差异化`
+- `反向思考`
+- `建议`
+
+In other words:
+- the Markdown article can stay fuller,
+- but the image deck must compress each project into a compact three-line点评 block.
+
+### Mapping from Markdown to cards
+
+When converting the report into cards:
+
+1. Ranking table -> ranking card.
+2. Quick-pm analysis section -> two detail cards for that ranking set.
+3. Compress each candidate's analysis into:
+   - one short value line,
+   - one short risk / reverse-thinking line,
+   - one short recommendation line.
+
+Do not invent a new card-level structure each day. Reuse this mapping so the deck remains stable and comparable over time.
+
 ## Skill 日榜 Trial Format
 
 When the user asks to test skill 日榜's usefulness, run a small sample:
