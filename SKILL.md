@@ -1,5 +1,6 @@
+---
 name: track-ai-product-trends
-description: Track the latest AI product trends from GitHub Trending Daily, GitHub new-hot repositories, and the skill daily leaderboard. Use this skill when the user asks for AI product trend tracking, daily AI product radar, new AI project recommendations, GitHub/skill AI analysis, or product/opportunity scoring for emerging AI tools.
+description: Track the latest AI product trends from GitHub Trending Daily, GitHub new-hot repositories, and skills.sh Trending + Hot. Use this skill when the user asks for AI product trend tracking, daily AI product radar, new AI project recommendations, GitHub/skill AI analysis, or product/opportunity scoring for emerging AI tools.
 ---
 
 # Track AI Product Trends
@@ -14,30 +15,36 @@ Use these sources by default unless the user narrows the request:
 
 1. GitHub Trending: daily developer attention.
 2. GitHub new-hot repo榜: recently created repositories with unusually high traction.
-3. Skill 日榜: recent skill launches and packaging signals inside the skill ecosystem.
+3. skills.sh Trending + Hot: agent skill packaging signals and workflow-layer traction.
 
 Optional later sources: Hacker News Show HN, Hugging Face Trending, Reddit/HN comments, Chrome Web Store/App Store reviews, YC launches, funding/news, and Chinese communities.
 
-## When To Use Skill 日榜
+## When To Use skills.sh
 
-Use skill 日榜 as a productization and workflow-packaging signal, not as final proof of product quality.
+Use skills.sh as a productization and workflow-packaging signal, not as final proof of product quality.
 
-Default skill 日榜 window:
-- Use the near-24-hour window, normally the most recent completed `skill 日榜` relative to the report date.
-- If the skill platform's same-day ranking is still moving, prefer the latest completed daily snapshot unless the user explicitly asks for an intraday view.
-- State the exact date used, e.g. `skill 日榜 window: 2026-06-25 daily leaderboard.`
+Default skills.sh window:
+- Use `https://www.skills.sh/trending` as the primary source. It is a weekly-style momentum page, not a strict daily leaderboard.
+- Use `https://www.skills.sh/hot` as the secondary recency source. It reflects right-now install movement and should be used for activity correction, not copied mechanically.
+- State the exact report date and source口径, e.g. `skills.sh 口径：Trending 为主，Hot 做活跃校正；对同 publisher 或高度模板化条目做去重和代表性筛选。`
 
-Skill 日榜 is useful for:
+skills.sh is useful for:
 - launch positioning, screenshots, concise capability packaging, and maker narrative,
 - detecting which AI capabilities are being productized into reusable skills,
 - finding workflow-layer innovation missed by GitHub repositories alone.
 
-Treat skill 日榜 with caution when:
-- the daily list is still young and the ranking is volatile,
+Treat skills.sh with caution when:
+- Trending and Hot are volatile or dominated by install spikes,
 - the listing page is sparse and only gives short descriptions without real usage evidence,
 - the skill has launch polish but weak proof of repeat use or durable workflow value.
 
-Best practice: use the latest completed skill 日榜 as the main source, then use the skill page itself, linked repo/site/docs, and adjacent launch context only for validation.
+Best practice: use skills.sh Trending as the main source, Hot as active-use correction, then use the skill page itself, linked repo/site/docs, and adjacent launch context only for validation.
+
+### skills.sh Deduplication Rules
+
+- Do not keep `find-skills` as a default final-table item when it appears high in the raw list; it is too foundational and familiar to be useful as a daily recommendation unless the user explicitly asks for skill discovery infrastructure.
+- If an entry is a generic installer, directory, or setup wrapper, include it only when it reveals a new adoption pattern. Prefer more concrete workflow skills such as video rendering, review/critiquing, office-document workflows, MCP building, PRD/issue conversion, or website-to-video.
+- If one publisher occupies many adjacent slots with near-identical templates, keep the 1-2 most representative entries and replace the rest with diverse skill types.
 
 ## Workflow
 
@@ -48,7 +55,7 @@ Best practice: use the latest completed skill 日榜 as the main source, then us
 2. Build candidate pool.
 - Collect GitHub Trending AI-related repos.
 - Collect GitHub new-hot repos using GitHub Search API or search queries, normally `created:>recent_date` + AI/LLM/agent/MCP/coding keywords + `sort=stars`.
-- Collect skill 日榜 candidates from the latest completed daily leaderboard, prioritizing AI-related skills, agent workflows, productivity automations, creator tools, and developer tooling.
+- Collect skills.sh candidates from Trending + Hot, prioritizing AI-related skills, agent workflows, productivity automations, creator tools, and developer tooling.
 - Deduplicate by product/repo/domain.
 
 3. Classify each candidate.
@@ -58,7 +65,7 @@ Best practice: use the latest completed skill 日榜 as the main source, then us
 
 4. Analyze evidence.
 - For GitHub repos, use `analyze-open-source-repo` quick-pm when the user asks for repo-level analysis or when a repo enters the top shortlist.
-- For skill 日榜 candidates, read the skill page plus linked repo/site/docs/examples if available.
+- For skills.sh candidates, read the skill page plus linked repo/site/docs/examples if available.
 - Separate facts from inference. Include confidence: high, medium, or low.
 
 5. Score and rank.
@@ -114,7 +121,7 @@ For daily reports, use this structure:
 - 3-5 bullets on today's AI product trend pattern.
 
 2. GitHub Trending Daily 榜
-- Keep GitHub and skill 日榜 in separate tables.
+- Keep GitHub and skills.sh in separate tables.
 - Keep GitHub Trending Daily and GitHub new-hot in separate tables.
 - Use `github.com/trending?since=daily` or another explicit GitHub Trending daily source.
 - If GitHub Trending cannot be parsed or accessed, still include the section and state: `GitHub Trending Daily 数据获取失败，本次不混用新增热门项目替代。`
@@ -125,13 +132,13 @@ For daily reports, use this structure:
 - Add a one-line note before the table with the exact data口径, e.g. `GitHub 新增热门口径：created:>2026-06-01 + AI/LLM/agent/MCP/coding keywords + sort=stars，并按产品相关性筛选重排。`
 - Table columns: 排名, 项目, 一句话定位, 产品设计分.
 
-4. Skill 日榜
-- Use the latest completed skill 日榜 by default.
-- When the user explicitly wants `skills.sh`, treat `https://www.skills.sh/trending` as the primary source and `https://www.skills.sh/hot` as a secondary recency signal.
-- For `skills.sh` mode, do not mechanically copy the raw Hot ranking into the final table. Use `Trending` as the main ranking base and use `Hot` only to promote still-active candidates or positive-change newcomers.
-- If the top of `Trending` or `Hot` is dominated by the same publisher or near-identical media skills, deduplicate aggressively and keep only the most representative 1-2 entries from that cluster.
+4. skills.sh 榜
+- Treat `https://www.skills.sh/trending` as the primary source and `https://www.skills.sh/hot` as a secondary recency signal.
+- Do not call this a strict `日榜` unless the source actually provides a completed daily leaderboard. Prefer `skills.sh 榜` or `skills.sh Trending + Hot`.
+- Do not mechanically copy the raw Hot ranking into the final table. Use `Trending` as the main ranking base and use `Hot` only to promote still-active candidates or positive-change newcomers.
+- If the top of `Trending` or `Hot` is dominated by the same publisher, generic setup wrappers, or near-identical media skills, deduplicate aggressively and keep only the most representative 1-2 entries from that cluster.
 - Table columns: 排名, 项目, 一句话定位, 产品设计分.
-- Add a one-line note before the table with the exact skill 日榜 date/window used.
+- Add a one-line note before the table with the exact skills.sh source口径.
 
 5. GitHub Trending Daily 分项目 quick-pm 分析
 For each GitHub Trending Daily shortlisted candidate, use this compact Chinese structure:
@@ -153,8 +160,8 @@ For each GitHub shortlisted candidate, use this compact Chinese structure:
 - `建议：...`
 - If the ranking table lists 10 items, this analysis section should also cover all 10 items unless the user explicitly asks for a shorter shortlist.
 
-7. Skill 日榜分项目 quick-pm 分析
-For each skill 日榜 shortlisted candidate, use the same compact Chinese structure:
+7. skills.sh 分项目 quick-pm 分析
+For each skills.sh shortlisted candidate, use the same compact Chinese structure:
 - `N. Skill Name：X.X/5`
 - `定位：...`
 - `用户价值：...`
@@ -168,12 +175,12 @@ For each skill 日榜 shortlisted candidate, use the same compact Chinese struct
 
 9. Follow-up queue
 - Which repos should be analyzed with `analyze-open-source-repo` quick-pm.
-- Which skill 日榜项目 need linked repo/site/docs validation.
+- Which skills.sh items need linked repo/site/docs validation.
 - Which themes are suitable for content output.
 
 10. Sources
-- Keep sources grouped by GitHub and skill 日榜.
-- Include exact dates for GitHub/API/skill 日榜 data when available.
+- Keep sources grouped by GitHub and skills.sh.
+- Include exact dates for GitHub/API/skills.sh data when available.
 
 ## Default Deliverable Scope
 
@@ -181,7 +188,7 @@ Unless the user explicitly asks for more, the daily radar should contain exactly
 
 1. `GitHub Trending Daily 榜`
 2. `GitHub 新增热门项目榜`
-3. `skill 日榜`
+3. `skills.sh 榜`
 
 Do not add a fourth default ranking table such as `GitHub star-growth榜`.
 If star-growth data becomes available later, include it only when the user explicitly asks for it or when the report is clearly framed as an extended edition.
@@ -199,8 +206,8 @@ Required order:
 3. `GitHub Trending Daily 榜` merged card `06-10`
 4. `GitHub 新增热门项目榜` merged card `01-05`
 5. `GitHub 新增热门项目榜` merged card `06-10`
-6. `skill 日榜` merged card `01-05`
-7. `skill 日榜` merged card `06-10`
+6. `skills.sh 榜` merged card `01-05`
+7. `skills.sh 榜` merged card `06-10`
 
 Do not output all榜单 overview pages first and then push all点评页 to the back.
 The intended reading flow is:
@@ -216,8 +223,8 @@ Recommended filename pattern:
 - `xhs-03-github-trending-2.png`
 - `xhs-04-github-new-hot-1.png`
 - `xhs-05-github-new-hot-2.png`
-- `xhs-06-skill-daily-1.png`
-- `xhs-07-skill-daily-2.png`
+- `xhs-06-skills-daily-1.png`
+- `xhs-07-skills-daily-2.png`
 
 If one榜单 has fewer than 10 entries, keep the same grouped ordering and simply reduce the second page to the remaining items.
 
@@ -246,11 +253,16 @@ Purpose:
 
 Must include:
 - report date,
-- source scope,
-- 2-3 short trend bullets,
-- a short "today's most值得跟踪" list.
+- source scope: GitHub Trending Daily, GitHub 新增热门, skills.sh Trending + Hot,
+- a clear 3-source count strip: `10 个 GitHub Trending · 10 个新增热门 · 10 个 Skills`,
+- three compact metrics:
+  - `30 / TODAY'S LIST / 3 组榜单 · 每组 Top 10`
+  - `3 / DATA FEEDS / Trending / New Hot / skills.sh`
+  - `4 / ROW FIELDS / 定位、价值、差异化、建议`
+- a 3-column preview of the top 3 entries from each ranking set.
 
 Do not let the summary cover become only an abstract slogan with no clue that the report contains GitHub projects and skill recommendations.
+Do not use an outdated cover that still says `20` items, `2` data feeds, or only GitHub/project signals when the deck contains the three default sources.
 
 #### Ranking cards: merged dense cards
 
@@ -303,68 +315,20 @@ Use the current dense Swiss-style information card pattern as the default:
 
 The ranking card is not the place for long prose. It should behave like a compact leaderboard.
 
-#### Detail cards page 1: `xhs-03`, `xhs-06`, `xhs-09`
+### Coverage rules
 
-Purpose:
-- Continue the ranking card with deeper点评 for items `01-05`.
-
-Must include:
-- items `01-05` only,
-- for each item: `项目名` plus **two compact点评 lines**.
-
-Preferred two-line structure:
-- `价值：...`
-- `建议：...`
-
-#### Detail cards page 2: `xhs-04`, `xhs-07`, `xhs-10`
-
-Purpose:
-- Continue the ranking card with deeper点评 for items `06-10`.
-
-Must include:
-- items `06-10` only,
-- for each item: `项目名` plus the same two compact点评 lines.
-
-### Hard rules for detail-card coverage
-
-- If a ranking card lists 10 items, the paired detail cards must also cover all 10 items.
+- If a ranking table lists 10 items, the two merged cards for that ranking set must cover all 10.
 - Do not stop after the first 5 items.
-- Do not replace the second detail page with summary filler while leaving items `06-10` uncovered.
-- Each listed item needs at least one "further evaluation" block in the card sequence, not just in the Markdown article.
-
-### Detail-card copy style
-
-Keep the style close to the proven `2026-06-23` deck:
-
-- concise,
-- product-oriented,
-- slightly judgmental,
-- easy to scan in image form.
-
-For image readability, prefer:
-- `价值`
-- `建议`
-
-over the full longer Markdown structure:
-- `定位`
-- `用户价值`
-- `差异化`
-- `反向思考`
-- `建议`
-
-In other words:
-- the Markdown article can stay fuller,
-- but the image deck must compress each project into a compact two-line点评 block.
+- Do not create separate detached detail cards by default.
+- Each listed item needs its evaluation directly inside the merged ranking card, not only in the Markdown article.
 
 ### Mapping from Markdown to cards
 
 When converting the report into cards:
 
-1. Ranking table -> ranking card.
-2. Quick-pm analysis section -> two detail cards for that ranking set.
-3. Compress each candidate's analysis into:
-   - one short value line,
-   - one short recommendation line.
+1. Ranking table + quick-pm analysis -> two merged dense cards for that ranking set.
+2. Items `01-05` go to the first card; items `06-10` go to the second card.
+3. Compress each candidate's analysis into `定位 / 价值 / 差异化 / 建议`.
 
 Do not invent a new card-level structure each day. Reuse this mapping so the deck remains stable and comparable over time.
 
@@ -392,14 +356,14 @@ Avoid overly dramatic or self-conscious labels such as:
 - `边缘但重要`
 - other headline-like phrasing that sounds too performative.
 
-## Skill 日榜 Trial Format
+## skills.sh Trial Format
 
-When the user asks to test skill 日榜's usefulness, run a small sample:
+When the user asks to test skills.sh usefulness, run a small sample:
 
-- Collect 5-10 AI-related skill candidates from the latest completed daily leaderboard, skill pages, search results, or official snippets.
+- Collect 5-10 AI-related skill candidates from skills.sh Trending + Hot, skill pages, search results, or official snippets.
 - If direct page access is blocked or the listing is too thin, say so and mark confidence low/medium.
 - Score each candidate with the five-dimension model.
-- Conclude whether skill 日榜 adds signal beyond GitHub, and where it is noisy.
+- Conclude whether skills.sh adds signal beyond GitHub, and where it is noisy.
 
 ## Guardrails
 
@@ -408,4 +372,4 @@ When the user asks to test skill 日榜's usefulness, run a small sample:
 - Prefer official sources: GitHub repo, skill page, linked website/docs, changelog, pricing.
 - Include exact dates for launches and volatile signals when available.
 - For GitHub repos, avoid deep code claims unless README/docs/code files were read.
-- For skill 日榜, treat ranking position as launch momentum, not durable retention.
+- For skills.sh, treat ranking position as launch momentum, not durable retention.
