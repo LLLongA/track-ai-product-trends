@@ -90,6 +90,7 @@ Use this fixed mapping when turning the Markdown report into social cards:
 ### `xhs-01-summary.png`
 
 - 这是什么报告：GitHub 项目 + 热门 skills 统计推荐
+- 数据统计时间：`YYYY.MM.DD`
 - 三组来源：GitHub Trending Daily、GitHub 新增热门、skills.sh Trending + Hot
 - 信息条：`10 个 GitHub Trending · 10 个新增热门 · 10 个 Skills`
 - 指标条：`30 / TODAY'S LIST`、`3 / DATA FEEDS`、`4 / ROW FIELDS`

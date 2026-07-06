@@ -252,7 +252,7 @@ Purpose:
 - Surface the 3-5 most值得跟踪 items across all sources.
 
 Must include:
-- report date,
+- a prominent main-content date label using the exact Chinese copy pattern: `数据统计时间：YYYY.MM.DD`,
 - source scope: GitHub Trending Daily, GitHub 新增热门, skills.sh Trending + Hot,
 - a clear 3-source count strip: `10 个 GitHub Trending · 10 个新增热门 · 10 个 Skills`,
 - three compact metrics:
@@ -263,6 +263,7 @@ Must include:
 
 Do not let the summary cover become only an abstract slogan with no clue that the report contains GitHub projects and skill recommendations.
 Do not use an outdated cover that still says `20` items, `2` data feeds, or only GitHub/project signals when the deck contains the three default sources.
+Do not use vague cover-date labels such as `更新`; the cover date represents the data collection/statistical time for the report.
 
 #### Ranking cards: merged dense cards
 
