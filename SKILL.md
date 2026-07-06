@@ -311,6 +311,7 @@ Use the current dense Swiss-style information card pattern as the default:
 4. Information density:
    - keep rows tighter between projects than the older detail-card layout,
    - but increase row-internal clarity through type hierarchy and micro-spacing instead of reducing content.
+   - keep正文小字 comfortably readable: body/explanation text should use the enlarged v8.1 scale, roughly 3px larger than the earlier v8 small-text setting, while titles, project names, rank numbers, scores, and page chrome stay unchanged.
 5. Avoid large unused blank space at the bottom of dense ranking pages. The 5 project rows should visually carry the page height more evenly.
 6. Keep wording objective and restrained. Avoid dramatic section labels or slogan-like page subtitles.
 
