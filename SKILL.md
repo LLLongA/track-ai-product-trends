@@ -57,6 +57,7 @@ Best practice: use skills.sh Trending as the main source, Hot as active-use corr
 - Collect GitHub new-hot repos using GitHub Search API or search queries, normally `created:>recent_date` + AI/LLM/agent/MCP/coding keywords + `sort=stars`.
 - Collect skills.sh candidates from Trending + Hot, prioritizing AI-related skills, agent workflows, productivity automations, creator tools, and developer tooling.
 - Deduplicate by product/repo/domain.
+- When a previous weekly/daily report is available locally, collect extra candidates beyond the raw Top 10, normally at least 20 per source, so repeated items can be skipped in detailed analysis and backfilled with fresh candidates.
 
 3. Classify each candidate.
 - Type: repo, product, model, agent, workflow, infra, app, plugin, content/community signal.
@@ -76,6 +77,39 @@ Best practice: use skills.sh Trending as the main source, Hot as active-use corr
 6. Produce recommendations.
 - Mark each candidate as `deep-dive`, `watch`, or `pass`.
 - Include why now, why it matters, and what evidence would change the score.
+
+## Repeat And Backfill Rules
+
+When comparing with the previous issue, use the most recent prior Markdown report from the same workflow if available. Compare within the same source section first:
+
+- `GitHub Trending Daily 榜` vs previous `GitHub Trending Daily 榜`
+- `GitHub 新增热门项目榜` vs previous `GitHub 新增热门项目榜`
+- `skills.sh 榜` vs previous `skills.sh 榜`
+
+Use stable IDs for matching:
+
+- GitHub: canonical `owner/repo` in lowercase.
+- skills.sh: canonical skill name, stripping publisher prefixes such as `publisher · skill-name` when needed.
+
+Default handling:
+
+- If an item also appeared in the previous issue, mark it as `上周已在榜`.
+- If an item did not appear in the previous issue, mark it as `本周新进入`.
+- Repeated items should be shown only as rank/status observations: `#N 项目名 — 上周已在榜`.
+- Repeated items must not receive a full one-sentence positioning, product-design score, or per-project quick-pm explanation in the current issue unless the user explicitly asks to re-analyze repeated items.
+- After skipping repeated items from detailed coverage, continue down the raw candidate pool and backfill with the next eligible `本周新进入` items until each source has 10 fully explained items.
+- If fewer than 10 fresh items are available after reasonable collection, state the count and do not pad with weak or unrelated candidates.
+
+Recommended section shape:
+
+1. `榜单变化`
+- `上周已在榜：#1 xxx；#4 yyy`
+- `本周新进入：10 个，本节展开前 10 个`
+
+2. `本周展开项目`
+- A table of 10 fresh items, each marked `本周新进入`, with positioning and score.
+
+Do not let repeated items crowd out fresh recommendations. The purpose of this rule is to preserve continuity while keeping the report useful for weekly discovery.
 
 ## Five-Dimension Scoring Model
 
@@ -125,19 +159,22 @@ For daily reports, use this structure:
 - Keep GitHub Trending Daily and GitHub new-hot in separate tables.
 - Use `github.com/trending?since=daily` or another explicit GitHub Trending daily source.
 - If GitHub Trending cannot be parsed or accessed, still include the section and state: `GitHub Trending Daily 数据获取失败，本次不混用新增热门项目替代。`
-- Table columns: 排名, 项目, 一句话定位, 产品设计分.
+- Add `榜单变化` before the table when a previous issue is available, marking repeated raw-rank items as `上周已在榜`.
+- Table columns for detailed fresh items: 排名, 项目, 状态, 一句话定位, 产品设计分.
 
 3. GitHub 新增热门项目榜
 - Use recently created repositories, usually `created:>近30天` or a concrete date such as `created:>2026-06-01`, filtered by AI/LLM/agent/MCP/coding keywords and sorted by stars.
 - Add a one-line note before the table with the exact data口径, e.g. `GitHub 新增热门口径：created:>2026-06-01 + AI/LLM/agent/MCP/coding keywords + sort=stars，并按产品相关性筛选重排。`
-- Table columns: 排名, 项目, 一句话定位, 产品设计分.
+- Add `榜单变化` before the table when a previous issue is available, marking repeated raw-rank items as `上周已在榜`.
+- Table columns for detailed fresh items: 排名, 项目, 状态, 一句话定位, 产品设计分.
 
 4. skills.sh 榜
 - Treat `https://www.skills.sh/trending` as the primary source and `https://www.skills.sh/hot` as a secondary recency signal.
 - Do not call this a strict `日榜` unless the source actually provides a completed daily leaderboard. Prefer `skills.sh 榜` or `skills.sh Trending + Hot`.
 - Do not mechanically copy the raw Hot ranking into the final table. Use `Trending` as the main ranking base and use `Hot` only to promote still-active candidates or positive-change newcomers.
 - If the top of `Trending` or `Hot` is dominated by the same publisher, generic setup wrappers, or near-identical media skills, deduplicate aggressively and keep only the most representative 1-2 entries from that cluster.
-- Table columns: 排名, 项目, 一句话定位, 产品设计分.
+- Add `榜单变化` before the table when a previous issue is available, marking repeated raw-rank items as `上周已在榜`.
+- Table columns for detailed fresh items: 排名, 项目, 状态, 一句话定位, 产品设计分.
 - Add a one-line note before the table with the exact skills.sh source口径.
 
 5. GitHub Trending Daily 分项目 quick-pm 分析
@@ -149,6 +186,7 @@ For each GitHub Trending Daily shortlisted candidate, use this compact Chinese s
 - `反向思考：...`
 - `建议：...`
 - If the ranking table lists 10 items, this analysis section should also cover all 10 items unless the user explicitly asks for a shorter shortlist.
+- Do not write quick-pm analysis for `上周已在榜` items under the default repeat/backfill rule; analyze the 10 `本周新进入` backfilled items instead.
 
 6. GitHub 新增热门分项目 quick-pm 分析
 For each GitHub shortlisted candidate, use this compact Chinese structure:
@@ -159,6 +197,7 @@ For each GitHub shortlisted candidate, use this compact Chinese structure:
 - `反向思考：...`
 - `建议：...`
 - If the ranking table lists 10 items, this analysis section should also cover all 10 items unless the user explicitly asks for a shorter shortlist.
+- Do not write quick-pm analysis for `上周已在榜` items under the default repeat/backfill rule; analyze the 10 `本周新进入` backfilled items instead.
 
 7. skills.sh 分项目 quick-pm 分析
 For each skills.sh shortlisted candidate, use the same compact Chinese structure:
@@ -169,6 +208,7 @@ For each skills.sh shortlisted candidate, use the same compact Chinese structure
 - `反向思考：...`
 - `建议：...`
 - If the ranking table lists 10 items, this analysis section should also cover all 10 items unless the user explicitly asks for a shorter shortlist.
+- Do not write quick-pm analysis for `上周已在榜` items under the default repeat/backfill rule; analyze the 10 `本周新进入` backfilled items instead.
 
 8. Trend clusters
 - Group candidates into themes such as coding agents, AI voice, workflow automation, agent infra, AI content production, AI search, vertical AI SaaS.
@@ -250,6 +290,7 @@ Purpose:
 - Tell the reader what this report is.
 - Give 2-3 clear trend judgments.
 - Surface the 3-5 most值得跟踪 items across all sources.
+- When repeat/backfill mode is used, explain that repeated items are marked separately and the detailed cards focus on `本周新进入` items.
 
 Must include:
 - a prominent main-content date label using the exact Chinese copy pattern: `数据统计时间：YYYY.MM.DD`,
@@ -275,6 +316,7 @@ Purpose:
 Must include on each project row:
 - `排名`
 - `项目名`
+- `状态` when repeat/backfill mode is used; default detailed rows should show `本周新进入`
 - `产品设计分`
 - `定位`
 - `价值`
@@ -300,6 +342,7 @@ Use the current dense Swiss-style information card pattern as the default:
 2. Each row is a compact evaluation block:
    - large red ranking number,
    - bold project name as the scan entry,
+   - status label such as `本周新进入` when repeat/backfill mode is used,
    - score right-aligned,
    - four short lines in this order: `定位 / 价值 / 差异化 / 建议`.
 3. Visual hierarchy:
@@ -323,6 +366,7 @@ The ranking card is not the place for long prose. It should behave like a compac
 - Do not stop after the first 5 items.
 - Do not create separate detached detail cards by default.
 - Each listed item needs its evaluation directly inside the merged ranking card, not only in the Markdown article.
+- In repeat/backfill mode, merged cards should cover the 10 detailed `本周新进入` items. Repeated `上周已在榜` items may appear as a small rank-only observation strip, but must not consume one of the 10 detailed row slots.
 
 ### Mapping from Markdown to cards
 

@@ -10,28 +10,40 @@ Use this as a compact shape for daily reports.
 
 ## GitHub Trending Daily 榜
 
-| 排名 | 项目 | 一句话定位 | 产品设计分 |
-|---:|---|---|---:|
-| 1 | example/trending-agent | 今日 GitHub Trending 上的 agent 工作流工具 | 4.1/5 |
-| 2 | example/trending-model | 今日 GitHub Trending 上的 AI 模型/工具项目 | 3.9/5 |
+榜单变化：
+- 上周已在榜：#3 example/repeated-agent
+- 本周新进入：继续向后递补，直到本节有 10 个可展开项目
+
+| 排名 | 项目 | 状态 | 一句话定位 | 产品设计分 |
+|---:|---|---|---|---:|
+| 1 | example/trending-agent | 本周新进入 | 今日 GitHub Trending 上的 agent 工作流工具 | 4.1/5 |
+| 2 | example/trending-model | 本周新进入 | 今日 GitHub Trending 上的 AI 模型/工具项目 | 3.9/5 |
 
 ## GitHub 新增热门项目榜
 
 GitHub 新增热门口径：created:>近30天 + AI/LLM/agent/MCP/coding keywords + sort=stars，并按产品相关性筛选重排。
 
-| 排名 | 项目 | 一句话定位 | 产品设计分 |
-|---:|---|---|---:|
-| 1 | example/new-hot-agent | 面向 coding agent 的运行与评估工具 | 4.2/5 |
-| 2 | example/new-hot-context | 面向 AI 编程的代码上下文治理层 | 4.0/5 |
+榜单变化：
+- 上周已在榜：#1 example/repeated-new-hot；#4 example/repeated-framework
+- 本周新进入：重复项只保留排名观察，详细点评递补到后续新项目
+
+| 排名 | 项目 | 状态 | 一句话定位 | 产品设计分 |
+|---:|---|---|---|---:|
+| 1 | example/new-hot-agent | 本周新进入 | 面向 coding agent 的运行与评估工具 | 4.2/5 |
+| 2 | example/new-hot-context | 本周新进入 | 面向 AI 编程的代码上下文治理层 | 4.0/5 |
 
 ## skills.sh 榜
 
 skills.sh 口径：Trending 为主，Hot 做活跃校正；对同 publisher 或高度模板化条目做去重和代表性筛选。
 
-| 排名 | 项目 | 一句话定位 | 产品设计分 |
-|---:|---|---|---:|
-| 1 | Example Agent Skill | 面向 AI agent 的评估、排障和执行增强 skill | 4.3/5 |
-| 2 | Example MCP Builder Skill | 面向 MCP server 构建和工具接入的可复用 skill | 4.4/5 |
+榜单变化：
+- 上周已在榜：#2 repeated-render；#8 repeated-doc
+- 本周新进入：优先展开本周新出现的 workflow、MCP、内容生产、协作或办公集成型 skill
+
+| 排名 | 项目 | 状态 | 一句话定位 | 产品设计分 |
+|---:|---|---|---|---:|
+| 1 | Example Agent Skill | 本周新进入 | 面向 AI agent 的评估、排障和执行增强 skill | 4.3/5 |
+| 2 | Example MCP Builder Skill | 本周新进入 | 面向 MCP server 构建和工具接入的可复用 skill | 4.4/5 |
 
 ## GitHub Trending Daily 分项目 quick-pm 分析
 
@@ -94,6 +106,7 @@ Use this fixed mapping when turning the Markdown report into social cards:
 - 三组来源：GitHub Trending Daily、GitHub 新增热门、skills.sh Trending + Hot
 - 信息条：`10 个 GitHub Trending · 10 个新增热门 · 10 个 Skills`
 - 指标条：`30 / TODAY'S LIST`、`3 / DATA FEEDS`、`4 / ROW FIELDS`
+- 重复口径：上周已在榜项目只保留排名观察，详细卡片递补展示本周新进入项目
 - 三列预览：每组榜单展示 Top 3 项目名
 
 ### `xhs-02-github-trending-1.png`
@@ -101,6 +114,7 @@ Use this fixed mapping when turning the Markdown report into social cards:
 - 覆盖 GitHub Trending 的 `01-05`
 - 每个项目都要直接带：
   - `项目名`
+  - `状态`，默认展示 `本周新进入`
   - `产品设计分`
   - `定位`
   - `价值`
@@ -115,7 +129,7 @@ Use this fixed mapping when turning the Markdown report into social cards:
 ### `xhs-04-github-new-hot-1.png`
 
 - 覆盖 GitHub 新增热门的 `01-05`
-- 每个项目都要直接带：`项目名 / 产品设计分 / 定位 / 价值 / 差异化 / 建议`
+- 每个项目都要直接带：`项目名 / 状态 / 产品设计分 / 定位 / 价值 / 差异化 / 建议`
 
 ### `xhs-05-github-new-hot-2.png`
 
@@ -125,7 +139,7 @@ Use this fixed mapping when turning the Markdown report into social cards:
 ### `xhs-06-skills-daily-1.png`
 
 - 覆盖 skills.sh 榜的 `01-05`
-- 每个项目都要直接带：`项目名 / 产品设计分 / 定位 / 价值 / 差异化 / 建议`
+- 每个项目都要直接带：`项目名 / 状态 / 产品设计分 / 定位 / 价值 / 差异化 / 建议`
 
 ### `xhs-07-skills-daily-2.png`
 
@@ -138,6 +152,7 @@ Hard rule:
 - 不允许只做前 5 个项目的进一步点评。
 - 不要退回成“单独榜单页 + 单独 detail 页”的默认结构。
 - 不要在默认榜单里保留过于基础且耳熟能详的 `find-skills`；优先选择更具体的 workflow、MCP、内容生产、协作或办公集成型 skill。
+- 重复上榜项目标注 `上周已在榜`，只展示排名观察；不占用详细点评位。详细卡片继续向后递补 `本周新进入` 项目，直到满足 10 个。
 
 Card label tone:
 
