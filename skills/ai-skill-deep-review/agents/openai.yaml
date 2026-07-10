@@ -1,0 +1,4 @@
+interface:
+  display_name: "AI Skill Deep Review"
+  short_description: "Evaluate agent skills with product and workflow rigor"
+  default_prompt: "Use $ai-skill-deep-review to deeply evaluate this agent skill or skill set."

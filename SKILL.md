@@ -40,6 +40,8 @@ Treat skills.sh with caution when:
 
 Best practice: use skills.sh Trending as the main source, Hot as active-use correction, then use the skill page itself, linked repo/site/docs, and adjacent launch context only for validation.
 
+When the user wants to judge whether a skill or skill set is actually well engineered, do not rely on the five-dimension product score alone. Use `ai-skill-deep-review` for the deeper skill-quality layer: trigger contract, procedural executability, validation loop, context economy, composability, guardrails, resource leverage, and maintenance.
+
 ### skills.sh Deduplication Rules
 
 - Do not keep `find-skills` as a default final-table item when it appears high in the raw list; it is too foundational and familiar to be useful as a daily recommendation unless the user explicitly asks for skill discovery infrastructure.
