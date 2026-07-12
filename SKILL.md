@@ -100,7 +100,7 @@ Default handling:
 - Repeated items should be shown only as rank/status observations: `#N 项目名 — 上周已在榜`.
 - Repeated items must not receive a full one-sentence positioning, product-design score, or per-project quick-pm explanation in the current issue unless the user explicitly asks to re-analyze repeated items.
 - After skipping repeated items from detailed coverage, continue down the raw candidate pool and backfill with the next eligible `本周新进入` items until each source has 10 fully explained items.
-- If fewer than 10 fresh items are available after reasonable collection, state the count and do not pad with weak or unrelated candidates.
+- If fewer than 10 fresh items are available after reasonable collection, backfill from the same raw source with adjacent infrastructure, workflow-entry, developer-tooling, or ecosystem-signal candidates until there are 10 items when possible. Mark these as `递补观察` and explain why they are adjacent to AI product trends. Do not backfill with completely unrelated candidates.
 
 Recommended section shape:
 
