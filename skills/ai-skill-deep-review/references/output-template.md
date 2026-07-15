@@ -14,8 +14,56 @@ Use this template when writing a full review. Keep facts and inference separate.
 | Source | `{local path or URL}` |
 | Host | `{Codex / Claude / Cursor / generic agent}` |
 | Files inspected | `{SKILL.md, references, scripts, agents metadata...}` |
+| Review folder | `{ai-skill-review-{slug}-{YYYYMMDD}}` |
+| Trial mode | `{real invocation / dry-run / partial trial}` |
 | Metrics date | `{YYYY-MM-DD, if applicable}` |
 | Confidence | `{high / medium / low}` |
+
+## Practice Trial
+
+### Trial Task
+
+`真实试用任务：...`
+
+Explain why this task represents the skill's intended use case and what a good result should look like.
+
+### Trial Prompt Or Command
+
+Store the exact prompt/command in `trial/trial-prompt.md`, then summarize it here:
+
+```text
+{prompt or command excerpt}
+```
+
+### Trial Artifacts
+
+| Artifact | Path | Notes |
+| --- | --- | --- |
+| Trial plan | `trial/trial-plan.md` |  |
+| Execution notes | `trial/execution-notes.md` |  |
+| Output files | `trial/outputs/...` |  |
+| Screenshots/images | `trial/screenshots/...` |  |
+| Validation | `trial/validation.md` |  |
+
+### Observed Result
+
+- `What worked:` ...
+- `Where the skill helped:` ...
+- `Where the agent had to improvise:` ...
+- `What failed or remained ambiguous:` ...
+
+### Validation Result
+
+State the checks performed and whether the output passed the trial criteria.
+
+Use one of:
+
+- `pass`
+- `partial pass`
+- `fail`
+- `blocked`
+
+Explain how the trial result affects the engineering score and adoption verdict.
 
 ## Bottom Line
 
@@ -69,7 +117,7 @@ For a skill set, add lifecycle coverage:
 | --- | ---: | --- | --- |
 | Trigger Contract |  |  |  |
 | Procedural Executability |  |  |  |
-| Evidence And Validation Loop |  |  |  |
+| Evidence And Validation Loop |  | `trial/validation.md`, screenshots, tests, output artifacts |  |
 | Context Economy |  |  |  |
 | Composability And Conflict Control |  |  |  |
 | Guardrail Strength |  |  |  |
@@ -107,16 +155,24 @@ State who should use it, who should not, and what evidence would change the verd
 
 ## Social Card Script
 
-When requested, prepare 6-9 pages:
+When requested, prepare 7-9 pages. The card script must include at least one page or evidence strip based on the real trial artifacts.
 
 1. Cover.
 2. Product vs skill distinction.
-3. Architecture map.
-4. Trigger and execution.
-5. Validation and guardrails.
-6. Composability/context economy.
-7. Scorecard/red flags.
-8. Recommendation/backlog.
+3. Practice trial result.
+4. Architecture map.
+5. Trigger and execution.
+6. Validation and guardrails.
+7. Composability/context economy.
+8. Scorecard/red flags.
+9. Recommendation/backlog.
+
+For the practice trial card, specify:
+
+- source text path from `trial/`,
+- screenshot/image path if applicable,
+- one observed output excerpt,
+- trial verdict: `pass / partial pass / fail / blocked`.
 
 ## Sources
 
