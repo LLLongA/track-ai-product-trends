@@ -1,6 +1,6 @@
 ---
 name: ai-product-deep-review
-description: Deeply review a single AI product, open-source repo, or launch from a product strategy perspective, with evidence collection, product scoring, adoption analysis, and social-card-ready output. Use when the user asks for AI 产品深度评测, 单个产品拆解, product teardown, 项目深度分析, or wants a cover card with logo/stars/conclusion plus multi-dimensional analysis.
+description: Deeply review a single AI product, open-source repo, launch, or focused utility, with evidence collection, real-use testing, product analysis, and social-card-ready output. Use when the user asks for AI 产品深度评测, 工具类评测, 单个产品拆解, product teardown, 项目深度分析, or wants cards that show installation, usage, actual results, mechanism, or product judgment.
 ---
 
 # AI Product Deep Review
@@ -26,6 +26,69 @@ Default audience: product-manager-facing, Chinese output, with enough technical 
 Default deliverable: a Markdown deep-review article that can later be turned into social cards.
 
 If the user asks for cards/images, first create or confirm the Markdown artifact, then invoke `guizang-social-card-skill` for image generation.
+
+## Review Mode Selection
+
+Choose one mode before collecting evidence:
+
+1. `Product deep review`: use for platforms, team products, workflow systems, multi-feature applications, infrastructure layers, and products where positioning, adoption, differentiation, and market timing are central.
+2. `Focused tool walkthrough`: use for CLI tools, plugins, single-purpose utilities, converters, checkers, generators, analyzers, and compact open-source tools where the reader mainly wants to know what it does, how to install it, how to use it, and what actually happened during a real run.
+
+Do not force a focused utility into the full eight-page product teardown. When uncertain, prefer the tool walkthrough if one user can complete the core task independently in one sitting and the useful result can be shown directly.
+
+### Focused Tool Walkthrough
+
+The main question is not `Is this a good business?` or even `Is this tool good?`. The main question is:
+
+> What task does this tool complete, how does the user run it, and what result does it produce under real conditions?
+
+Required evidence:
+
+- official installation instructions,
+- one actual local or browser run when feasible,
+- exact test environment and version,
+- the input, command, or workflow used,
+- the observed output rather than only the claimed output,
+- clear separation between measured results, estimates, simulations, and unverified claims,
+- 2-4 short optimization or extension directions at the end.
+
+Write the Markdown as a practical walkthrough, not a score-led teardown. Product and opportunity scores are optional and normally omitted. Do not structure the article around pass/fail judgments unless the user explicitly asks for benchmarking or validation.
+
+Default five-card structure for focused tools:
+
+1. `Cover / task outcome`
+- Product/tool name.
+- A direct outcome-oriented title, preferably with a small step count, e.g. `3 步判断你的电脑能运行哪些本地 AI 模型`.
+- One representative real result and the test environment.
+- Logo or real product artifact.
+
+2. `Install / start`
+- The shortest recommended installation path.
+- 2-3 step usage flow.
+- Only commands that were verified or come from official docs.
+
+3. `Actual run / result`
+- Real environment, input, and observed output.
+- One readable result table, terminal capture, screenshot, generated file, or before/after comparison.
+- Explain the most important output fields in plain language.
+
+4. `More scenarios / controls`
+- Show how task, parameters, modes, or constraints change the output.
+- Prefer 2-3 concrete variants over a full feature inventory.
+
+5. `Use boundary / next step`
+- Explain what the result means and what it does not mean.
+- Show the natural next action in the workflow.
+- End with only a compact optimization/extension block; do not turn this page into a long risk review.
+
+Five-card content rules:
+
+- Keep installation and command text large enough for XHS; remove optional flags rather than shrinking below mobile readability.
+- Use real screenshots, official assets, terminal output, or generated artifacts as evidence. Do not invent product UI.
+- Keep the cover outcome-oriented; avoid generic titles such as `工具深度评测`.
+- Do not spend a whole card on market size, GTM, scoring, or competitors for a focused utility.
+- Preserve the full trial log and detailed article outside the cards; the cards show the useful path and result.
+- Use the full product-deep-review structure only when the tool expands into a platform, team workflow, or strategically meaningful product layer.
 
 ## Deep Review Visual Direction
 
