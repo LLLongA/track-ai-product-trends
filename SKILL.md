@@ -288,25 +288,52 @@ Do not default back to the old "one ranking table page + two separate detail pag
 
 #### `xhs-01-summary.png`
 
-Purpose:
-- Tell the reader what this report is.
-- Give 2-3 clear trend judgments.
-- Surface the 3-5 most值得跟踪 items across all sources.
-- When repeat/backfill mode is used, explain that repeated items are marked separately and the detailed cards focus on `本周新进入` items.
+The summary cover has two named layout schemes. **方案 A is the default. 方案 B is retained for lighter, more directory-like issues.** The date must always describe the data collection/statistical time, not only the publication time.
 
-Must include:
-- a prominent main-content date label using the exact Chinese copy pattern: `数据统计时间：YYYY.MM.DD`,
-- source scope: GitHub Trending Daily, GitHub 新增热门, skills.sh Trending + Hot,
-- a clear 3-source count strip: `10 个 GitHub Trending · 10 个新增热门 · 10 个 Skills`,
-- three compact metrics:
-  - `30 / TODAY'S LIST / 3 组榜单 · 每组 Top 10`
-  - `3 / DATA FEEDS / Trending / New Hot / skills.sh`
-  - `4 / ROW FIELDS / 定位、价值、差异化、建议`
-- a 3-column preview of the top 3 entries from each ranking set.
+#### 方案 A：深色榜单主体（默认）
 
-Do not let the summary cover become only an abstract slogan with no clue that the report contains GitHub projects and skill recommendations.
-Do not use an outdated cover that still says `20` items, `2` data feeds, or only GitHub/project signals when the deck contains the three default sources.
-Do not use vague cover-date labels such as `更新`; the cover date represents the data collection/statistical time for the report.
+Use this when the goal is stronger first-card attraction and a clear reading entry on XHS. It follows the successful deep-review cover logic: one concrete topic, one dominant visual block, and a small number of hard signals.
+
+Required structure:
+- top metadata with `数据统计时间：YYYY.MM.DD` or an equally prominent exact-date treatment,
+- one plain-language title that states what the reader will see, e.g. `本周值得看的 AI 项目与 skill`,
+- one short objective subtitle explaining the three-source scope and what is being selected,
+- one large, high-contrast dark panel containing the three ranking sources:
+  - `GitHub Trending Daily`
+  - `GitHub New Hot`
+  - `skills.sh Trending + Hot`
+- one compact metric strip, normally `30 / 3 / YYYY.MM.DD` for 30 observation slots, 3 sources, and the report date.
+
+The dark panel replaces the old small three-card preview. It is the primary visual anchor and must remain readable at an approximately 360px-wide thumbnail. Keep ranking source names and counts; move detailed project names and per-project judgments to the ranking cards.
+
+Do not place the following on the default A cover unless they are large enough to survive a mobile thumbnail:
+- long source explanations,
+- English metadata labels below 20px,
+- the four evaluation fields,
+- a full Top 3 preview from every source,
+- production notes such as `VALUE · DIFFERENTIATION · ADVICE`.
+
+#### 方案 B：三榜单预览（保留）
+
+Use this when the issue needs a lighter, more informational directory cover, when the user explicitly asks to retain the previous style, or when the source list itself is the main content hook.
+
+Required structure:
+- exact date label using `数据统计时间：YYYY.MM.DD`,
+- title identifying the report as an AI product trend radar,
+- clear source scope for GitHub Trending Daily, GitHub 新增热门, and skills.sh Trending + Hot,
+- three source preview blocks with the top 3 entries or representative top entries,
+- count information showing 10 items per source and 30 total observation slots.
+
+The B cover may use the old three-column preview and compact metrics, but must still pass the XHS thumbnail rule: visible body copy should generally be at least 24-26px, and non-essential small metadata should be removed rather than compressed below legibility.
+
+#### Cover selection and shared rules
+
+- Select **方案 A by default** for every new social-card package.
+- Select **方案 B** only when the user requests the previous cover, a lighter directory treatment, or a direct A/B comparison.
+- Do not use vague cover-date labels such as `更新`; the cover date represents the data collection/statistical time for the report.
+- Do not let either cover become only an abstract slogan. It must clearly signal GitHub projects and skills.sh skill recommendations.
+- Do not use outdated counts such as `20` items or `2` data feeds when the deck contains the three default sources.
+- Apply a thumbnail check at roughly 360px wide before delivery. Remove small text that cannot be read instead of adding more labels.
 
 #### Ranking cards: merged dense cards
 
